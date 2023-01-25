@@ -2,6 +2,7 @@
 "use strict";
 
 console.log("hello", "world"); //console output
+console.assert(false, "assertion"); // if false "assertion" is printing"
 
 //Variable scopes
 var num1 = 1; //global
@@ -23,10 +24,25 @@ const nullValue = null;
 const undefinedValue = undefined;
 
 // JS is not strict typed language
-let variable = 1 / 0; // Infinity (number)
+let variable = 1;
 variable = true;
-variable = "string" / 2; // NaN (number)
+variable = "string";
 console.log(typeof variable);
+
+// numbers
+const num4 = 1.2e6 + 1e-6;
+const num5 = 0b11 + 0o77 + 0xff; // 0b - binary // 0o - octal // 0x - hexadecimal
+const num6 = +num2.toString(2) + +num2.toString(16); // (base) // unary + converts to number
+
+const epsilon = Number.EPSILON; // default little number
+                                // used to work with inaccurate calculations
+const nan = "hey" - 1; // NaN - not a number // unique value has type number
+const inf = - 1 / 0 + 1 / 0; // -Inf + Inf -> NaN
+const isNan = isNaN(num4); // true if NaN
+const isNormalNumber = isFinite(num4); // false if NaN or +-Inf
+
+const floatFromString = parseFloat("150.28px") // number before letters
+const intFromString = parseInt("150.28px") // number before letters -> to int
 
 //Math operators
 num2 += (num1 + num3);
@@ -49,6 +65,7 @@ Math.pow(2, 3); //power
 Math.random() //random number
 Math.round(1.5); //round
 Math.sqrt(4); //square root
+num2.toFixed(3); // 3 digits after . // returns string
 
 // Logical operator
 let condition = (1 <= 2) && (3 >= 1);
@@ -147,14 +164,6 @@ const personsAge = person.age;
 const personsStreet = person.adress[home]; // variable could be used as key only with []
 
 person.age++; // property of const object could be changed
-person = {
-    name: "Abraham",
-    age: 11,
-    adress: {
-        street: "Backer Street",
-        [home]: "221b",
-    },
-} // const object could be changed
 person["lastName"] = "Holmes"; // adding a new property
 
 let personsHome = person?.adress?.house; // if (person.adress) -> if (person.adress.house) -> person.adress.house
@@ -171,3 +180,4 @@ function InitUser(name, age) { // constructr, named with capital letter
 }
 
 let joe = new InitUser("Joe", 33);
+
